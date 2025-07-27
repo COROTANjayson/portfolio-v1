@@ -1,5 +1,7 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
+import { SectionHeader } from "./general/headers";
+import { Section } from "./general/section";
 
 const About: React.FC = () => {
   const skills = [
@@ -50,106 +52,90 @@ const About: React.FC = () => {
   };
 
   return (
-    <section
+    <Section
       id="about"
       className="py-36 bg-gradient-to-tr from-slate-900 to-slate-800"
     >
-      <div className="max-w-5xl mx-auto px-4">
-        {/* Header */}
+      {/* Header */}
+      <SectionHeader title="About Me" />
+
+      <div className="grid  xl:grid-cols-2 gap-12 items-center">
+        {/* Content Section */}
         <motion.div
-          className="flex items-center gap-5 mb-16"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          className="order-2 xl:order-1"
         >
-          <h2 className="text-3xl font-bold text-slate-300">About Me</h2>
-          <motion.div
-            className="h-[2px] bg-gradient-to-r from-cyan-400/60"
-            initial={{ width: 0 }}
-            whileInView={{ width: "12rem" }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          />
+          <p className="text-lg text-slate-400 mb-6 leading-relaxed">
+            I'm a passionate full-stack developer with over 5 years of
+            experience building web applications that combine beautiful design
+            with robust functionality. I love turning complex problems into
+            simple, elegant solutions.
+          </p>
+          <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+            When I'm not coding, you'll find me exploring new technologies,
+            contributing to open-source projects, or enjoying a good cup of
+            coffee while reading about the latest industry trends.
+          </p>
+
+          {/* Skills */}
+          <div className="mt-10">
+            <motion.h3
+              className="text-xl font-semibold text-cyan-300 mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Technologies & Skills
+            </motion.h3>
+            <motion.div
+              className="flex flex-wrap gap-3"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {skills.map((skill, _) => (
+                <motion.span
+                  key={skill}
+                  variants={skillVariants}
+                  className="px-4 py-2 bg-slate-700/50 border border-slate-600/30 text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-600/50 hover:border-slate-500/50 transition-colors duration-200 cursor-default"
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Content Section */}
+        {/* Image Section */}
+        <motion.div
+          className="text-center order-1 xl:order-2"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <motion.div
-            variants={fadeInVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
           >
-            <p className="text-lg text-slate-400 mb-6 leading-relaxed">
-              I'm a passionate full-stack developer with over 5 years of
-              experience building web applications that combine beautiful design
-              with robust functionality. I love turning complex problems into
-              simple, elegant solutions.
-            </p>
-            <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-              When I'm not coding, you'll find me exploring new technologies,
-              contributing to open-source projects, or enjoying a good cup of
-              coffee while reading about the latest industry trends.
-            </p>
-
-            {/* Skills */}
-            <div className="mt-10">
-              <motion.h3
-                className="text-xl font-semibold text-cyan-300 mb-6"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                Technologies & Skills
-              </motion.h3>
-              <motion.div
-                className="flex flex-wrap gap-3"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {skills.map((skill, _) => (
-                  <motion.span
-                    key={skill}
-                    variants={skillVariants}
-                    className="px-4 py-2 bg-slate-700/50 border border-slate-600/30 text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-600/50 hover:border-slate-500/50 transition-colors duration-200 cursor-default"
-                    whileHover={{
-                      scale: 1.05,
-                      transition: { duration: 0.2 },
-                    }}
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop"
+              alt="Coding workspace"
+              className="rounded-lg shadow-xl object-cover w-full h-[500px]"
+            />
           </motion.div>
-
-          {/* Image Section */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop"
-                alt="Coding workspace"
-                className="rounded-lg shadow-xl"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </Section>
   );
 };
 
