@@ -59,14 +59,14 @@ const About: React.FC = () => {
       {/* Header */}
       <SectionHeader title="About Me" />
 
-      <div className="grid  xl:grid-cols-2 gap-12 items-center">
+      <div className="flex flex-col-reverse lg:flex-row gap-20 ">
         {/* Content Section */}
         <motion.div
           variants={fadeInVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="order-2 xl:order-1"
+          className="flex-1 "
         >
           <p className="text-lg text-slate-400 mb-6 leading-relaxed">
             I'm a passionate full-stack developer with over 5 years of
@@ -117,11 +117,11 @@ const About: React.FC = () => {
 
         {/* Image Section */}
         <motion.div
-          className="text-center order-1 xl:order-2"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
+          className="flex justify-center items-center"
         >
           <motion.div
             whileHover={{ scale: 1.02 }}
@@ -130,7 +130,7 @@ const About: React.FC = () => {
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop"
               alt="Coding workspace"
-              className="rounded-lg shadow-xl object-cover w-full h-[500px]"
+              className="rounded-lg shadow-xl object-cover h-[300px] w-[300px] lg:h-[400px] lg:w-[400px]"
             />
           </motion.div>
         </motion.div>
