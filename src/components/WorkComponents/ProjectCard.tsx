@@ -1,8 +1,15 @@
-import { ExternalLink, Github } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  User,
+  Code,
+  Database,
+  Globe,
+} from "lucide-react";
 import React from "react";
-import { type Project } from "../..//utils/constants";
+import { type Project } from "../../utils/constants";
 
-// ProjectCard Component (not using Framer Motion here)
+// ProjectCard Component
 export const ProjectCard: React.FC<{
   project: Project;
   cardRef: (el: HTMLDivElement | null) => void;
@@ -10,54 +17,110 @@ export const ProjectCard: React.FC<{
   <div
     key={project.id}
     ref={cardRef}
-    className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl duration-300 ease-out transform hover:-translate-y-2"
+    className="group bg-slate-800/90 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 duration-500 ease-out transform hover:-translate-y-3 hover:border-slate-600/80 transition-all"
   >
-    <div className="relative overflow-hidden">
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="relative overflow-hidden rounded-t-2xl">
+      <div className="w-full h-52 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-103"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+      {/* Category Badges */}
       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
         <CategoryBadges categories={project.categories} />
       </div>
+
+      {/* Overlay Content */}
+      <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+        <div className="flex justify-between items-end">
+          <div>
+            <ProjectLinks github={project.github} live={project.live} />
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div className="p-6">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+    <div className="p-6 space-y-3">
+      <h3 className="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors duration-300 leading-tight mb-3">
         {project.title}
       </h3>
-      <p className="text-gray-600 mb-4 leading-relaxed">
+      <div className="">
+        <RoleDisplay role={project.role} />
+      </div>
+      <p className="text-slate-300 mb- leading-relaxed text-sm group-hover:text-slate-200 transition-colors duration-300">
         {project.description}
       </p>
-
       <TechnologyTags technologies={project.technologies} />
-      <ProjectLinks github={project.github} live={project.live} />
     </div>
   </div>
 );
 
+// RoleDisplay Component (for card body)
+const RoleDisplay: React.FC<{ role: Project["role"] }> = ({ role }) => {
+  const getRoleConfig = (role: string) => {
+    switch (role) {
+      case "frontend":
+        return {
+          icon: Globe,
+          label: "Frontend Developer",
+          className: "text-green-400 bg-green-500/10 border-green-500/20",
+          iconClass: "text-green-400",
+        };
+      case "backend":
+        return {
+          icon: Database,
+          label: "Backend Developer",
+          className: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+          iconClass: "text-purple-400",
+        };
+      case "full-stack":
+        return {
+          icon: Code,
+          label: "Full Stack Developer",
+          className: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+          iconClass: "text-blue-400",
+        };
+      default:
+        return {
+          icon: User,
+          label: role,
+          className: "text-slate-400 bg-slate-500/10 border-slate-500/20",
+          iconClass: "text-slate-400",
+        };
+    }
+  };
+
+  const config = getRoleConfig(role);
+  const IconComponent = config.icon;
+
+  return (
+    <div
+      className={`
+      inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border backdrop-blur-sm
+      ${config.className}
+      transition-all duration-300 
+    `}
+    >
+      <IconComponent size={14} className={config.iconClass} />
+      <span className="font-medium text-sm">{config.label}</span>
+    </div>
+  );
+};
+
 // CategoryBadges Component
 const CategoryBadges: React.FC<{ categories: string[] }> = ({ categories }) => (
-  <div className="flex flex-wrap gap-1">
+  <div className="flex flex-wrap gap-1.5">
     {categories.map((category) => (
       <span
         key={category}
-        className={`
-          px-2 py-1 rounded-full text-xs font-medium text-white
-          ${
-            category === "fullstack"
-              ? "bg-purple-500"
-              : category === "backend"
-              ? "bg-green-500"
-              : category === "frontend"
-              ? "bg-blue-500"
-              : "bg-pink-500"
-          }
-        `}
+        className="px-2.5 py-1 rounded-full text-xs font-medium capitalize bg-slate-700/80 text-slate-200 border border-slate-600/50 backdrop-blur-sm shadow-md"
       >
-        {category === "personal-web" ? "Personal" : category}
+        {category === "personal-web" ? "Personal" : category.replace("-", " ")}
       </span>
     ))}
   </div>
@@ -67,43 +130,65 @@ const CategoryBadges: React.FC<{ categories: string[] }> = ({ categories }) => (
 const TechnologyTags: React.FC<{ technologies: string[] }> = ({
   technologies,
 }) => (
-  <div className="flex flex-wrap gap-2 mb-6">
-    {technologies.map((tech, techIndex) => (
+  <div className="flex flex-wrap gap-2 mt-4">
+    {technologies.slice(0, 6).map((tech, techIndex) => (
       <span
         key={techIndex}
-        className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 rounded-full text-sm font-medium hover:from-blue-50 hover:to-blue-100 hover:text-blue-700 transition-all duration-300 cursor-default"
+        className="px-3 py-1.5 bg-gradient-to-r from-slate-700/60 to-slate-600/60 text-slate-200 rounded-lg text-xs font-medium 
+                   hover:from-blue-600/20 hover:to-purple-600/20 hover:text-blue-300 hover:border-blue-500/30 
+                   transition-all duration-300 cursor-default border border-slate-600/40 backdrop-blur-sm
+                   group-hover:shadow-lg transform hover:scale-105"
       >
         {tech}
       </span>
     ))}
+    {technologies.length > 6 && (
+      <span className="px-3 py-1.5 bg-slate-700/40 text-slate-400 rounded-lg text-xs font-medium border border-slate-600/30 backdrop-blur-sm">
+        +{technologies.length - 6} more
+      </span>
+    )}
   </div>
 );
 
 // ProjectLinks Component
-const ProjectLinks: React.FC<{ github: string; live: string }> = ({
+const ProjectLinks: React.FC<{ github?: string; live?: string }> = ({
   github,
   live,
 }) => (
-  <div className="flex space-x-4">
-    <a
-      href={github}
-      className="flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-300 group/link"
-    >
-      <Github
-        size={16}
-        className="mr-2 transition-transform duration-300 group-hover/link:scale-110"
-      />
-      <span className="font-medium">Code</span>
-    </a>
-    <a
-      href={live}
-      className="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-300 group/link"
-    >
-      <ExternalLink
-        size={16}
-        className="mr-2 transition-transform duration-300 group-hover/link:scale-110"
-      />
-      <span className="font-medium">Live Demo</span>
-    </a>
+  <div className="flex space-x-3">
+    {github && (
+      <a
+        href={github}
+        className="flex items-center text-slate-300 hover:text-white transition-all group/link
+                 bg-slate-800/80 hover:bg-slate-700/80 px-3 py-2 rounded-lg backdrop-blur-sm border border-slate-600/50
+                 hover:border-slate-500 shadow-lg hover:shadow-xl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Github
+          size={14}
+          className="mr-1.5 transition-transform duration-300 group-hover/link:scale-110"
+        />
+        <span className="font-medium text-sm">Code</span>
+      </a>
+    )}
+    {live && (
+      <a
+        href={live}
+        className="flex items-center text-blue-300 hover:text-blue-200 group/link
+                 bg-blue-600/20 hover:bg-blue-600/30 px-3 py-2 rounded-lg backdrop-blur-sm border border-blue-500/30
+                 hover:border-blue-400/50 shadow-lg hover:shadow-xl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <ExternalLink
+          size={14}
+          className="mr-1.5 transition-transform duration-300 "
+        />
+        <span className="font-medium text-sm">Live</span>
+      </a>
+    )}
   </div>
 );
+
+export default ProjectCard;

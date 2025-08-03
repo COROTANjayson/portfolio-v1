@@ -28,24 +28,14 @@ const Work: React.FC = () => {
   const menuItems: MenuItem[] = [
     { key: "all", label: "All Projects", count: projects.length },
     {
-      key: "fullstack",
-      label: "Full Stack",
-      count: getProjectsByCategory("fullstack").length,
+      key: "team project",
+      label: "Team Project",
+      count: getProjectsByCategory("team project").length,
     },
     {
-      key: "backend",
-      label: "Backend",
-      count: getProjectsByCategory("backend").length,
-    },
-    {
-      key: "frontend",
-      label: "Frontend",
-      count: getProjectsByCategory("frontend").length,
-    },
-    {
-      key: "personal-web",
-      label: "Personal Web",
-      count: getProjectsByCategory("personal-web").length,
+      key: "personal",
+      label: "Personal Project",
+      count: getProjectsByCategory("personal").length,
     },
   ];
 
@@ -160,7 +150,7 @@ const Work: React.FC = () => {
         {/* PROJECTS GRID */}
         <motion.div
           ref={gridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px] relative"
+          className="grid md:grid-cols-2  gap-8 min-h-[400px] relative"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: "easeOut" }}

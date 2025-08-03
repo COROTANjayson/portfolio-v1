@@ -4,9 +4,10 @@ export interface Project {
   description: string;
   technologies: string[];
   image: string;
-  github: string;
-  live: string;
-  categories: string[];
+  github?: string;
+  live?: string;
+  categories: string[]; // e.g., ["team project"] or ["personal"]
+  role: "frontend" | "backend" | "full-stack";
 }
 
 export const projects: Project[] = [
@@ -20,7 +21,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["fullstack", "frontend", "backend"],
+    categories: ["team project"],
+    role: "full-stack",
   },
   {
     id: 2,
@@ -31,7 +33,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["frontend", "fullstack"],
+    categories: ["team project"],
+    role: "frontend",
   },
   {
     id: 3,
@@ -42,7 +45,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["frontend"],
+    categories: ["team project"],
+    role: "frontend",
   },
   {
     id: 4,
@@ -53,7 +57,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["backend"],
+    categories: ["team project"],
+    role: "backend",
   },
   {
     id: 5,
@@ -64,7 +69,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["backend", "fullstack"],
+    categories: ["team project"],
+    role: "backend",
   },
   {
     id: 6,
@@ -75,7 +81,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1486312338219-ce68e2c6b7a6?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["personal-web", "frontend"],
+    categories: ["personal"],
+    role: "frontend",
   },
   {
     id: 7,
@@ -86,7 +93,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["personal-web", "frontend"],
+    categories: ["personal"],
+    role: "frontend",
   },
   {
     id: 8,
@@ -97,7 +105,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["fullstack", "frontend", "backend"],
+    categories: ["team project"],
+    role: "full-stack",
   },
   {
     id: 9,
@@ -108,7 +117,8 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["frontend"],
+    categories: ["personal"],
+    role: "frontend",
   },
   {
     id: 10,
@@ -119,6 +129,7 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
     github: "#",
     live: "#",
-    categories: ["backend", "fullstack"],
+    categories: ["team project"],
+    role: "backend",
   },
 ];

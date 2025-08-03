@@ -20,7 +20,7 @@ export const Socials: React.FC<{
   return (
     <div
       className={cn(
-        ` fixed right-20 bottom-4 hidden lg:flex lg:flex-col items-center gap-6 z-50 transform transition-all duration-700 translate-y-0 opacity-100`,
+        ` fixed right-10 xl:right-20 bottom-4 hidden lg:flex lg:flex-col items-center gap-6 z-50 transform transition-all duration-700 translate-y-0 opacity-100`,
         className
       )}
     >
@@ -51,7 +51,7 @@ export const EmailLeftSide: React.FC<{
   return (
     <div
       className={cn(
-        `fixed left-20 bottom-4 hidden lg:flex lg:flex-col items-center gap-2 z-50 `,
+        `fixed left-10 xl:left-20 bottom-4 hidden lg:flex lg:flex-col items-center gap-2 z-50 `,
         className
       )}
     >
