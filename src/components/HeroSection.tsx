@@ -1,4 +1,4 @@
-import { Socials } from "./Socials";
+import { Socials } from "./Navigation/Socials";
 
 const Hero: React.FC = () => {
   return (

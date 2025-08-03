@@ -1,7 +1,7 @@
 import React from "react";
-import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { EmailLeftSide, Socials } from "./Socials";
+import { EmailLeftSide, Socials } from "./Navigation/Socials";
+import Navigation from "./Navigation/Navigation";
 
 type LayoutProps = {
   children: React.ReactNode;
