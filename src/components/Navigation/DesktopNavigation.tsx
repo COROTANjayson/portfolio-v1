@@ -2,11 +2,14 @@ import React from "react";
 import ResumeButton from "./ResumeButton";
 import type { NavigationProps, NavItem } from "./interfaces";
 import { motion, type Variants } from "framer-motion";
-// Desktop Navigation Component
+import { useNavigate } from "react-router-dom";
+
 const DesktopNavigation: React.FC<NavigationProps> = ({
   activeSection,
   scrollToSection,
 }) => {
+  const navigate = useNavigate();
+
   const navItems: NavItem[] = [
     { id: "hero", label: "Home" },
     { id: "about", label: "About" },
@@ -15,7 +18,6 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
     { id: "contact", label: "Contact" },
   ];
 
-  // Container animation for the navigation
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,7 +29,6 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
     },
   };
 
-  // Individual nav item animation
   const itemVariants: Variants = {
     hidden: {
       opacity: 0,
@@ -47,13 +48,8 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
     },
   };
 
-  // Active state animation for the underline
   const underlineVariants: Variants = {
-    inactive: {
-      width: 0,
-      opacity: 0,
-      scale: 0.8,
-    },
+    inactive: { width: 0, opacity: 0, scale: 0.8 },
     active: {
       width: "100%",
       opacity: 1,
@@ -67,6 +63,15 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
     },
   };
 
+  const handleNavigate = (sectionId: string) => {
+    navigate("/", { replace: false });
+    setTimeout(() => {
+      scrollToSection(sectionId);
+      // Optional: update hash in URL for bookmarking
+      window.history.pushState(null, "", `#${sectionId}`);
+    }, 50); // small delay so the page renders before scrolling
+  };
+
   return (
     <motion.div
       className="hidden md:flex space-x-1 relative"
@@ -78,7 +83,7 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
         <motion.button
           key={item.id}
           variants={itemVariants}
-          onClick={() => scrollToSection(item.id)}
+          onClick={() => handleNavigate(item.id)}
           className={`relative px-4 py-2 transition-colors duration-300 ease-out group overflow-hidden ${
             activeSection === item.id
               ? "text-white font-medium"
