@@ -112,7 +112,7 @@ const Experience = () => {
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <SectionHeader title="Professional Experience" className=" text-4xl" />
+        <SectionHeader title="Professional Experience" number={2} className=" text-4xl" />
         <motion.div className="space-y-6" variants={containerVariants}>
           {experiences.map((exp, index) => (
             <motion.div
@@ -126,15 +126,15 @@ const Experience = () => {
 
                 <div
                   className={cn(
-                    "absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:blur  opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                    "absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded   opacity-0 group-hover:opacity-100 transition-opacity duration-500",
                     index === openIndex && "opacity-100 "
                   )}
                 ></div>
 
-                <div className="relative bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-slate-700/30 overflow-hidden shadow-2xl hover:shadow-blue-900/10 transition-all duration-300">
+                <div className="relative bg-slate-800/60 backdrop-blur-xl rounded border border-slate-700/30 overflow-hidden shadow-2xl  transition-all duration-300">
                   <motion.button
                     onClick={() => toggleAccordion(index)}
-                    className="w-full text-left p-8 rounded-2xl"
+                    className="w-full text-left p-8 rounded"
                     whileHover={{ scale: 1.005 }}
                     whileTap={{ scale: 0.998 }}
                   >
@@ -184,7 +184,7 @@ const Experience = () => {
                 }}
                 className="overflow-hidden"
               >
-                <div className="relative bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-100 rounded-2xl overflow-hidden">
+                <div className="relative bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-100 rounded overflow-hidden">
                   <div className="p-6 space-y-6">
                     {/* Logo beside Description and Tech Stack */}
                     <div className="flex flex-col md:flex-row gap-6 items-start justify-center">
@@ -193,7 +193,7 @@ const Experience = () => {
                           <img
                             src={exp.logo}
                             alt={`${exp.company} logo`}
-                            className="w-full h-full object-cover rounded-lg"
+                            className="w-full h-full object-cover rounded"
                           />
                         </div>
                       </div> */}
@@ -210,7 +210,7 @@ const Experience = () => {
                             {exp.techStack.map((tech, techIndex) => (
                               <div
                                 key={techIndex}
-                                className="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-medium text-blue-300 border border-blue-500/30 backdrop-blur-sm hover:bg-gradient-to-r hover:from-blue-500/30 hover:to-purple-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
+                                className="inline-flex items-center bg-slate-300/10 px-3 py-1.5 rounded-xl text-xs font-medium text-blue-300 border border-blue-500/30 backdrop-blur-sm     transition-all duration-300 "
                               >
                                 {tech}
                               </div>

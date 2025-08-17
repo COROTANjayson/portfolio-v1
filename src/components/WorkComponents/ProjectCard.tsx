@@ -101,7 +101,7 @@ const RoleDisplay: React.FC<{ role: Project["role"] }> = ({ role }) => {
   return (
     <div
       className={`
-      inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border backdrop-blur-sm
+      inline-flex items-center gap-2 px-3 py-1.5 rounded border backdrop-blur-sm
       ${config.className}
       transition-all duration-300 
     `}
@@ -134,7 +134,7 @@ const TechnologyTags: React.FC<{ technologies: string[] }> = ({
     {technologies.slice(0, 6).map((tech, techIndex) => (
       <span
         key={techIndex}
-        className="px-3 py-1.5 bg-gradient-to-r from-slate-700/60 to-slate-600/60 text-slate-200 rounded-lg text-xs font-medium 
+        className="px-3 py-1.5 bg-gradient-to-r from-slate-700/60 to-slate-600/60 text-slate-200 rounded text-xs font-medium 
                    hover:from-blue-600/20 hover:to-purple-600/20 hover:text-blue-300 hover:border-blue-500/30 
                    transition-all duration-300 cursor-default border border-slate-600/40 backdrop-blur-sm
                    group-hover:shadow-lg transform hover:scale-105"
@@ -143,7 +143,7 @@ const TechnologyTags: React.FC<{ technologies: string[] }> = ({
       </span>
     ))}
     {technologies.length > 6 && (
-      <span className="px-3 py-1.5 bg-slate-700/40 text-slate-400 rounded-lg text-xs font-medium border border-slate-600/30 backdrop-blur-sm">
+      <span className="px-3 py-1.5 bg-slate-700/40 text-slate-400 rounded text-xs font-medium border border-slate-600/30 backdrop-blur-sm">
         +{technologies.length - 6} more
       </span>
     )}
@@ -160,7 +160,7 @@ const ProjectLinks: React.FC<{ github?: string; live?: string }> = ({
       <a
         href={github}
         className="flex items-center text-slate-300 hover:text-white transition-all group/link
-                 bg-slate-800/80 hover:bg-slate-700/80 px-3 py-2 rounded-lg backdrop-blur-sm border border-slate-600/50
+                 bg-slate-800/80 hover:bg-slate-700/80 px-3 py-2 rounded backdrop-blur-sm border border-slate-600/50
                  hover:border-slate-500 shadow-lg hover:shadow-xl"
         target="_blank"
         rel="noopener noreferrer"
@@ -176,7 +176,7 @@ const ProjectLinks: React.FC<{ github?: string; live?: string }> = ({
       <a
         href={live}
         className="flex items-center text-blue-300 hover:text-blue-200 group/link
-                 bg-blue-600/20 hover:bg-blue-600/30 px-3 py-2 rounded-lg backdrop-blur-sm border border-blue-500/30
+                 bg-blue-600/20 hover:bg-blue-600/30 px-3 py-2 rounded backdrop-blur-sm border border-blue-500/30
                  hover:border-blue-400/50 shadow-lg hover:shadow-xl"
         target="_blank"
         rel="noopener noreferrer"

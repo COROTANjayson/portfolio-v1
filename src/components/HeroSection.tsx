@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
       >
         <div className="mb-12">
           <motion.p
-            className="text-lg text-cyan-300  md:text-2xl lg:text-3xl font-medium tracking-wider"
+            className=" text-lg text-cyan-300  md:text-2xl lg:text-3xl font-medium tracking-wider"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-200 mb-6 leading-tight"
+            className="font-space-grotesk text-5xl md:text-7xl lg:text-8xl font-bold text-slate-200 mb-6 leading-tight"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
           >
             Jayson Corotan
             <motion.span
-              className="text-cyan-300"
+              className="text-cyan-300 "
               animate={{
                 opacity: [1, 0.5, 1],
               }}
@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
               delay: 0.7,
             }}
           >
-            <p className="text-2xl md:text-4xl lg:text-5xl font-bold  tracking-wide bg-gradient-to-r from-slate-300 to-cyan-300 bg-clip-text text-transparent">
+            <p className="font-space-grotesk text-2xl md:text-4xl lg:text-5xl font-bold  tracking-wide bg-gradient-to-r from-slate-300 to-cyan-300 bg-clip-text text-transparent">
               Full Stack Developer
             </p>
           </motion.div>
@@ -88,7 +88,7 @@ const Hero: React.FC = () => {
         </div>
 
         <motion.button
-          className="group relative overflow-hidden text-slate-900 px-8 py-4 rounded-lg font-semibold border-2 border-cyan-300 transition-all duration-300 backdrop-blur-sm"
+          className="group relative overflow-hidden text-slate-900 px-8 py-4 rounded font-semibold border-2 border-cyan-300 transition-all duration-300 backdrop-blur-sm"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{

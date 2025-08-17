@@ -4,12 +4,13 @@ import { cn } from "../../utils/utils";
 
 export const SectionHeader: React.FC<{
   title: string;
+  number?: string | number;
   className?: string;
-}> = ({ title, className }) => {
+}> = ({ title, className, number }) => {
   return (
     <motion.div
       className={cn(
-        "relative flex gap-4 items-end  mb-16 font-semibold text-5xl md:text-7xl   w-full ",
+        " relative flex gap-4 items-end  mb-16 font-bold text-5xl md:text-7xl   w-full ",
         className
       )}
       initial={{ opacity: 0, x: -30 }}
@@ -34,8 +35,10 @@ export const SectionHeader: React.FC<{
           viewport={{ once: true }}
         />
       </div> */}
-      <span className="text-2xl text-fuchsia-300">01.</span>
-      <h2 className="tracking-wide text-slate-300">{title}</h2>
+      <span className="text-2xl lg:text-3xl text-fuchsia-300">{number}.</span>
+      <h2 className="tracking-wide text-slate-300 font-space-grotesk ">
+        {title}
+      </h2>
       {/* 
       <div className="flex items-center gap-1.5 rotate-45 -mb-20 -ml-5">
         <motion.div

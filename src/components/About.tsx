@@ -57,7 +57,7 @@ const About: React.FC = () => {
       className="py-36 bg-gradient-to-tr from-slate-900 to-slate-800"
     >
       {/* Header */}
-      <SectionHeader title="About Me" />
+      <SectionHeader title="About Me" number={1} />
 
       <div className="flex flex-col-reverse lg:flex-row gap-20 ">
         {/* Content Section */}
@@ -102,7 +102,7 @@ const About: React.FC = () => {
                 <motion.span
                   key={skill}
                   variants={skillVariants}
-                  className="px-4 py-2 bg-slate-700/50 border border-slate-600/30 text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-600/50 hover:border-slate-500/50 transition-colors duration-200 cursor-default"
+                  className="px-4 py-2 bg-slate-700/50 border border-slate-600/30 text-slate-300 rounded-xl text-sm font-medium hover:bg-slate-600/50 hover:border-slate-500/50 transition-colors duration-200 cursor-default"
                   whileHover={{
                     scale: 1.05,
                     transition: { duration: 0.2 },
@@ -130,7 +130,7 @@ const About: React.FC = () => {
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop"
               alt="Coding workspace"
-              className="rounded-lg shadow-xl object-cover h-[300px] w-[300px] lg:h-[400px] lg:w-[400px]"
+              className="rounded shadow-xl object-cover h-[300px] w-[300px] lg:h-[400px] lg:w-[400px]"
             />
           </motion.div>
         </motion.div>

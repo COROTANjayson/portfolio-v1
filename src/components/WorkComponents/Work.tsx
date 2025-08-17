@@ -136,7 +136,7 @@ const Work: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto px-4">
         {/* HEADER */}
-        <SectionHeader title="Professional Experience" className=" " />
+        <SectionHeader title="My Works" number={3} />
 
         {/* FILTER MENU */}
 
