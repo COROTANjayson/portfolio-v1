@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
-import { EmailLeftSide, Socials } from "./Navigation/Socials";
+import { ScrollUpButton, Socials } from "./Navigation/Socials";
 import Navigation from "./Navigation/Navigation";
 
 type LayoutProps = {
@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="relative min-h-screen bg-slate-900">
       <Navigation />
       <Socials />
-      <EmailLeftSide />
+      <ScrollUpButton />
       {children}
       <Footer />
     </div>

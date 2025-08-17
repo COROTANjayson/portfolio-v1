@@ -41,3 +41,47 @@
   animation: gradientShift 3s ease infinite;
   background-size: 200% 200%;
 }
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+}
+
+.scroll-up-btn:hover .static-chevron {
+  opacity: 0;
+}
+
+.scroll-up-btn:hover .animated-chevron-1 {
+  animation: scrollUp 1.5s ease-in-out infinite;
+}
+
+.scroll-up-btn:hover .animated-chevron-2 {
+  animation: scrollUp 1.5s ease-in-out infinite 0.2s;
+}
+
+.scroll-up-btn:hover .animated-chevron-3 {
+  animation: scrollUp 1.5s ease-in-out infinite 0.4s;
+}

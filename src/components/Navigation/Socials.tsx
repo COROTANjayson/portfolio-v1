@@ -6,6 +6,8 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "../../utils/utils";
 import { motion, type Variants } from "framer-motion";
+import { ChevronUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 // Individual social icon animation
 const itemVariants: Variants = {
@@ -27,27 +29,6 @@ const itemVariants: Variants = {
   },
 };
 
-// Line animation
-const lineVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    scaleY: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    scaleY: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 25,
-      duration: 0.8,
-      delay: 1,
-    },
-  },
-};
-
 // Container animation
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -63,7 +44,7 @@ const containerVariants = {
 export const Socials: React.FC<{
   className?: string;
   lineClassName?: string;
-}> = ({ className, lineClassName }) => {
+}> = ({ className }) => {
   const socialList = [
     { href: "https://github.com/", Icon: IconBrandGithub },
     { href: "https://instagram.com/", Icon: IconBrandInstagram },
@@ -74,7 +55,7 @@ export const Socials: React.FC<{
   return (
     <motion.div
       className={cn(
-        `fixed right-10 xl:right-20 bottom-4 hidden lg:flex lg:flex-col items-center gap-6 z-50`,
+        `fixed left-10 xl:left-20 bottom-7 hidden lg:flex lg:flex-col items-center gap-6 z-50`,
         className
       )}
       variants={containerVariants}
@@ -96,30 +77,6 @@ export const Socials: React.FC<{
           />
         </motion.a>
       ))}
-
-      <motion.div
-        className={cn("h-40 w-[2px] bg-slate-400 mt-2", lineClassName)}
-        variants={lineVariants}
-        style={{ originY: 0 }}
-      />
-    </motion.div>
-  );
-};
-
-export const EmailLeftSide: React.FC<{
-  className?: string;
-  lineClassName?: string;
-}> = ({ className, lineClassName }) => {
-  return (
-    <motion.div
-      className={cn(
-        `fixed left-10 xl:left-20 bottom-4 hidden lg:flex lg:flex-col items-center gap-2 z-50`,
-        className
-      )}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
       <motion.a
         href={"#"}
         target="_blank"
@@ -133,12 +90,71 @@ export const EmailLeftSide: React.FC<{
       >
         corotanjaysonjake@gmail.com
       </motion.a>
-
-      <motion.div
-        className={cn("h-40 w-[2px] bg-slate-400 mt-2", lineClassName)}
-        variants={lineVariants}
-        style={{ originY: 0 }}
-      />
     </motion.div>
+  );
+};
+
+export const ScrollUpButton: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsVisible(window.scrollY > 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <button
+        onClick={scrollToTop}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={cn(
+          "scroll-up-btn cursor-pointer fixed right-10 xl:right-10 bottom-10 z-50 p-3 rounded-full",
+          "bg-slate-600/60 text-slate-800 shadow-lg hover:shadow-xl",
+          "backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden",
+          "hover:scale-105 active:scale-95",
+          isVisible
+            ? "opacity-100 pointer-events-auto translate-y-0"
+            : "opacity-0 pointer-events-none translate-y-2"
+        )}
+        style={{
+          transform: `translateY(${isVisible ? 0 : 8}px) scale(${
+            isHovered ? 1.25 : 1
+          })`,
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
+      >
+        <div className="relative w-10 h-10 flex items-center justify-center">
+          {/* Static chevron - visible by default */}
+          <ChevronUp
+            size={30}
+            className="static-chevron absolute  text-cyan-300 transition-opacity duration-300"
+          />
+
+          {/* Animated chevrons - only animate on hover */}
+          <ChevronUp
+            size={30}
+            className="animated-chevron-1 absolute  text-cyan-300"
+          />
+          <ChevronUp
+            size={30}
+            className="animated-chevron-2 absolute  text-cyan-300 opacity-70"
+          />
+          <ChevronUp
+            size={30}
+            className="animated-chevron-3 absolute  text-cyan-300 opacity-40"
+          />
+        </div>
+      </button>
+    </>
   );
 };

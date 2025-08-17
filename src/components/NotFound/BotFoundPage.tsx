@@ -1,11 +1,7 @@
-import { Home, ArrowLeft } from "lucide-react";
+import { Home } from "lucide-react";
 import { motion } from "framer-motion";
 
 const NotFound: React.FC = () => {
-  const handleGoBack = () => {
-    window.history.back();
-  };
-
   const handleGoHome = () => {
     window.location.href = "/";
   };
