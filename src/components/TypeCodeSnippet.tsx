@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const TypingCodeSnippet = () => {
   const [displayedLines, setDisplayedLines] = useState([] as any);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentChar, setCurrentChar] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // 👈 detect visibility
+  const ref = useRef<HTMLDivElement>(null); // 👈 reference container
 
   const codeLines = [
     {
@@ -115,7 +117,27 @@ const TypingCodeSnippet = () => {
     },
   ];
 
+  // 👇 Detect when component is visible in viewport
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // only trigger once
+        }
+      },
+      { threshold: 0.3 } // 30% of component visible triggers animation
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // 👇 Typing animation only starts when visible
+  useEffect(() => {
+    if (!isVisible) return; // don’t run until in view
+
     if (currentLineIndex >= codeLines.length) {
       setIsComplete(true);
       return;
@@ -136,18 +158,15 @@ const TypingCodeSnippet = () => {
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [currentChar, currentLineIndex]);
+  }, [isVisible, currentChar, currentLineIndex]);
 
   const renderColoredLine = (lineText: string | any[], segments: any[]) => {
     let charCount = 0;
-
     return segments.map((segment, i) => {
       const segmentStart = charCount;
       const segmentEnd = charCount + segment.text.length;
       charCount = segmentEnd;
-
       const visiblePart = lineText.slice(segmentStart, segmentEnd);
-
       return (
         <span key={i} className={segment.color}>
           {visiblePart}
@@ -157,7 +176,7 @@ const TypingCodeSnippet = () => {
   };
 
   return (
-    <div className="flex-1 w-full lg:w-1/2">
+    <div ref={ref} className="flex-1 w-full lg:w-1/2">
       {/* Terminal Header */}
       <div className="bg-slate-800 rounded-t-xl border-b border-slate-700 px-4 py-3 flex items-center gap-2">
         <div className="flex gap-2">
@@ -173,7 +192,6 @@ const TypingCodeSnippet = () => {
       {/* Code Editor */}
       <div className="bg-slate-900/90 backdrop-blur-sm rounded-b-xl shadow-2xl border border-slate-700 border-t-0 p-6 font-mono text-sm leading-relaxed">
         <div className="space-y-1">
-          {/* Completed lines */}
           {displayedLines.map((line: string | any[], i: number) => (
             <div key={i} className="flex">
               <span className="text-slate-600 select-none mr-4 text-right w-6">
@@ -185,8 +203,7 @@ const TypingCodeSnippet = () => {
             </div>
           ))}
 
-          {/* Current typing line */}
-          {!isComplete && currentLineIndex < codeLines.length && (
+          {!isComplete && isVisible && currentLineIndex < codeLines.length && (
             <div className="flex">
               <span className="text-slate-600 select-none mr-4 text-right w-6">
                 {displayedLines.length + 1}
@@ -206,7 +223,6 @@ const TypingCodeSnippet = () => {
           )}
         </div>
 
-        {/* Status Indicator */}
         {isComplete && (
           <div className="mt-6 pt-4 border-t border-slate-700 flex items-center gap-3 text-slate-400 text-xs">
             <div className="flex items-center gap-2">
