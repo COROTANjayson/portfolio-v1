@@ -49,17 +49,17 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
   };
 
   const underlineVariants: Variants = {
-    inactive: { width: 0, opacity: 0, scale: 0.8 },
+    inactive: {
+      opacity: 0,
+      x: -4,
+      y: 4,
+      scale: 0.9,
+    },
     active: {
-      width: "100%",
       opacity: 1,
+      x: 0,
+      y: 0,
       scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 25,
-        duration: 0.4,
-      },
     },
   };
 
@@ -67,14 +67,13 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
     navigate("/", { replace: false });
     setTimeout(() => {
       scrollToSection(sectionId);
-      // Optional: update hash in URL for bookmarking
       window.history.pushState(null, "", `#${sectionId}`);
-    }, 50); // small delay so the page renders before scrolling
+    }, 50);
   };
 
   return (
     <motion.div
-      className="hidden md:flex space-x-1 relative"
+      className="hidden md:flex space-x-1 relative gap-1"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -84,7 +83,7 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
           key={item.id}
           variants={itemVariants}
           onClick={() => handleNavigate(item.id)}
-          className={`relative px-4 py-2 transition-colors duration-300 ease-out group overflow-hidden ${
+          className={` relative flex items-center py-2 transition-colors duration-300 ease-out group overflow-hidden cursor-pointer ${
             activeSection === item.id
               ? "text-white font-medium"
               : "text-slate-300 hover:text-white"
@@ -98,8 +97,28 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
             transition: { type: "spring", stiffness: 600, damping: 15 },
           }}
         >
+          <motion.div
+            className="w-[2px] h-5 bg-cyan-400 rotate-[35deg] rounded mr-1"
+            variants={underlineVariants}
+            initial="inactive"
+            animate={activeSection === item.id ? "active" : "inactive"}
+            transition={{
+              duration: 0.4,
+              ease: [0.25, 0.1, 0.25, 1], // smooth cubic-bezier (ease)
+            }}
+          />
+          <motion.div
+            className="w-[2px] h-5 bg-cyan-400 rotate-[35deg] rounded mr-3"
+            variants={underlineVariants}
+            initial="inactive"
+            animate={activeSection === item.id ? "active" : "inactive"}
+            transition={{
+              duration: 0.4,
+              ease: [0.25, 0.1, 0.25, 1], // smooth cubic-bezier (ease)
+            }}
+          />
           <motion.span
-            className="relative z-10 tracking-wide"
+            className="relative z-10 tracking-wide text-sm font"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -111,12 +130,12 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
             {item.label}
           </motion.span>
 
-          <motion.div
-            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[2.5px] bg-cyan-300 rounded-full"
+          {/* <motion.div
+            className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[1.5px] bg-cyan-300 rounded-full"
             variants={underlineVariants}
             initial="inactive"
             animate={activeSection === item.id ? "active" : "inactive"}
-          />
+          /> */}
         </motion.button>
       ))}
 

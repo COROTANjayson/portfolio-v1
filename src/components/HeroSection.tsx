@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
       >
         <div className="mb-12">
           <motion.p
-            className=" text-lg text-cyan-300  md:text-2xl lg:text-3xl font-medium tracking-wider"
+            className=" text-base text-cyan-300  md:text-xl lg:text-xl font-medium tracking-wider"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.h1
-            className="font-space-grotesk text-5xl md:text-7xl lg:text-8xl font-bold text-slate-200 mb-6 leading-tight"
+            className="font-space-grotesk text-5xl md:text-7xl lg:text-8xl font-bold text-slate-200 leading-tight"
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
@@ -66,13 +66,13 @@ const Hero: React.FC = () => {
               delay: 0.7,
             }}
           >
-            <p className="font-space-grotesk text-2xl md:text-4xl lg:text-5xl font-bold  tracking-wide bg-gradient-to-r from-slate-300 to-cyan-300 bg-clip-text text-transparent">
+            <p className="font-space-grotesk text-3xl md:text-5xl lg:text-6xl font-bold  tracking-wide bg-gradient-to-r from-slate-300 to-cyan-300 bg-clip-text text-transparent">
               Full Stack Developer
             </p>
           </motion.div>
 
           <motion.p
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mb-12 leading-relaxed"
+            className="text-lg md:text-lg text-gray-300 max-w-3xl mb-12 leading-relaxed"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -81,8 +81,8 @@ const Hero: React.FC = () => {
               delay: 0.9,
             }}
           >
-            Passionate about creating beautiful, functional web applications
-            that solve real-world problems and deliver exceptional user
+            I create modern, efficient web applications focused on solving
+            real-world problems and delivering seamless, enjoyable user
             experiences.
           </motion.p>
         </div>
