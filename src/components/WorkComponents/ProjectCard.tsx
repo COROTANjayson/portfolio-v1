@@ -17,25 +17,21 @@ export const ProjectCard: React.FC<{
   <div
     key={project.id}
     ref={cardRef}
-    className="group bg-slate-800/90 backdrop-blur-sm border border-slate-700/50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 duration-500 ease-out transform hover:-translate-y-3 hover:border-slate-600/80 transition-all"
+    className="group bg-slate-800/90 backdrop-blur-sm border border-slate-700/50 rounded shadow-xl overflow-hidden  hover:border-slate-600/80 transition-all"
   >
-    <div className="relative overflow-hidden rounded-t-2xl">
+    <div className="relative overflow-hidden rounded-t">
       <div className="w-full h-52 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-103"
+          className="w-full h-full object-top object-cover transition-transform duration-300 ease-out group-hover:scale-103"
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-      {/* Category Badges */}
       <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
         <CategoryBadges categories={project.categories} />
       </div>
-
-      {/* Overlay Content */}
       <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
         <div className="flex justify-between items-end">
           <div>
@@ -45,11 +41,11 @@ export const ProjectCard: React.FC<{
       </div>
     </div>
 
-    <div className="p-6 space-y-3">
-      <h3 className="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors duration-300 leading-tight mb-3">
+    <div className="p-6 space-y-2">
+      <h3 className="text-xl font-bold text-slate-100  transition-colors duration-300 leading-tight ">
         {project.title}
       </h3>
-      <div className="">
+      <div>
         <RoleDisplay role={project.role} />
       </div>
       <p className="text-slate-300 mb- leading-relaxed text-sm group-hover:text-slate-200 transition-colors duration-300">
@@ -68,28 +64,28 @@ const RoleDisplay: React.FC<{ role: Project["role"] }> = ({ role }) => {
         return {
           icon: Globe,
           label: "Frontend Developer",
-          className: "text-green-400 bg-green-500/10 border-green-500/20",
+          className: "text-green-400 ",
           iconClass: "text-green-400",
         };
       case "backend":
         return {
           icon: Database,
           label: "Backend Developer",
-          className: "text-purple-400 bg-purple-500/10 border-purple-500/20",
+          className: "text-purple-400 ",
           iconClass: "text-purple-400",
         };
       case "full-stack":
         return {
           icon: Code,
           label: "Full Stack Developer",
-          className: "text-blue-400 bg-blue-500/10 border-blue-500/20",
+          className: "text-blue-400 ",
           iconClass: "text-blue-400",
         };
       default:
         return {
           icon: User,
           label: role,
-          className: "text-slate-400 bg-slate-500/10 border-slate-500/20",
+          className: "text-slate-400 ",
           iconClass: "text-slate-400",
         };
     }
@@ -101,7 +97,7 @@ const RoleDisplay: React.FC<{ role: Project["role"] }> = ({ role }) => {
   return (
     <div
       className={`
-      inline-flex items-center gap-2 px-3 py-1.5 rounded border backdrop-blur-sm
+      inline-flex items-center gap-2 rounded 
       ${config.className}
       transition-all duration-300 
     `}
@@ -112,7 +108,6 @@ const RoleDisplay: React.FC<{ role: Project["role"] }> = ({ role }) => {
   );
 };
 
-// CategoryBadges Component
 const CategoryBadges: React.FC<{ categories: string[] }> = ({ categories }) => (
   <div className="flex flex-wrap gap-1.5">
     {categories.map((category) => (
@@ -135,9 +130,7 @@ const TechnologyTags: React.FC<{ technologies: string[] }> = ({
       <span
         key={techIndex}
         className="px-3 py-1.5 bg-gradient-to-r from-slate-700/60 to-slate-600/60 text-slate-200 rounded text-xs font-medium 
-                   hover:from-blue-600/20 hover:to-purple-600/20 hover:text-blue-300 hover:border-blue-500/30 
-                   transition-all duration-300 cursor-default border border-slate-600/40 backdrop-blur-sm
-                   group-hover:shadow-lg transform hover:scale-105"
+                   transition-all duration-300 cursor-default border border-slate-600/40 backdrop-blur-sm "
       >
         {tech}
       </span>

@@ -18,12 +18,12 @@ const TypingCodeSnippet = () => {
       ],
     },
     {
-      raw: 'name: "JaysonJake Corotan",',
+      raw: 'name: "Jayson Jake Corotan",',
       indent: 1,
       segments: [
         { text: "name", color: "text-cyan-400" },
         { text: ": ", color: "text-slate-300" },
-        { text: '"JaysonJake Corotan"', color: "text-amber-300" },
+        { text: '"Jayson Jake Corotan"', color: "text-amber-300" },
         { text: ",", color: "text-slate-300" },
       ],
     },
@@ -38,12 +38,12 @@ const TypingCodeSnippet = () => {
       ],
     },
     {
-      raw: 'location: "Butuan, PH",',
+      raw: 'location: "Cagayan de Oro city, PH",',
       indent: 1,
       segments: [
         { text: "location", color: "text-cyan-400" },
         { text: ": ", color: "text-slate-300" },
-        { text: '"Butuan, PH"', color: "text-amber-300" },
+        { text: '"Cagayan de Oro city, PH"', color: "text-amber-300" },
         { text: ",", color: "text-slate-300" },
       ],
     },

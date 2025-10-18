@@ -20,22 +20,30 @@ const Work: React.FC = () => {
   const gridRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
   const isInView = useInView(gridRef, { once: true });
-  const getProjectsByCategory = (category: string): Project[] =>
-    category === "all"
-      ? projects
-      : projects.filter((project) => project.categories.includes(category));
 
+  const getProjectsByCategory = (category: string): Project[] => {
+    if (category === "all") return projects;
+
+    const filtered = projects.filter((p) => p.categories.includes(category));
+    // Ensure uniqueness by project id
+    return Array.from(new Map(filtered.map((p) => [p.id, p])).values());
+  };
   const menuItems: MenuItem[] = [
     { key: "all", label: "All Projects", count: projects.length },
+    {
+      key: "work project",
+      label: "Work Project",
+      count: getProjectsByCategory("work project").length,
+    },
     {
       key: "team project",
       label: "Team Project",
       count: getProjectsByCategory("team project").length,
     },
     {
-      key: "personal",
+      key: "personal project",
       label: "Personal Project",
-      count: getProjectsByCategory("personal").length,
+      count: getProjectsByCategory("personal project").length,
     },
   ];
 

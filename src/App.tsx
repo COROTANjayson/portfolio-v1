@@ -10,7 +10,6 @@ const App: React.FC = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
