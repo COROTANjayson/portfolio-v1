@@ -17,8 +17,7 @@ export const projects: Project[] = [
     description:
       "An internal management application for Wela School Systems (LVRO), designed to streamline organizational processes, enhance team alignment, and optimize decision-making workflows.",
     technologies: ["Sveltekit", "PostgreSQL(Prisma)", "Typescript"],
-    image:
-      "./pulong.png",
+    image: "./pulong.png",
     categories: ["work project", "personal project"],
     role: "full-stack",
   },
@@ -29,8 +28,7 @@ export const projects: Project[] = [
     description:
       "A real estate photo editing website developed with SEO-driven structure, fast rendering, and optimized metadata for higher discoverability.",
     technologies: ["Next.js", "Framer Motion", "Tailwind", "Shadcn"],
-    image:
-      "./imageedits.png",
+    image: "./imageedits.png",
     live: "https://www.imageedits.com/en-US",
     categories: ["work project", "personal project"],
     role: "frontend",
@@ -41,8 +39,7 @@ export const projects: Project[] = [
     description:
       "A real estate image editing website featuring SEO-focused design, optimized performance, and structured data for better search ranking.",
     technologies: ["Next.js", "Framer Motion", "Tailwind", "Shadcn"],
-    image:
-      "./virtuallens.png",
+    image: "./virtuallens.png",
     live: "https://virtuallens.com.au/",
     categories: ["work project", "personal project"],
     role: "frontend",
@@ -53,8 +50,7 @@ export const projects: Project[] = [
     description:
       "A POS system developed for restaurant operations featuring dynamic table management, order synchronization, and modular architecture.",
     technologies: ["Node.js", "Express", "MongoDB"],
-    image:
-      "./plateful.png",
+    image: "./plateful.png",
     // github: "#",
     // live: "#",
     categories: ["work project", "team project"],
@@ -66,8 +62,7 @@ export const projects: Project[] = [
     description:
       "A property listing website designed to simplify the buying process through accurate listings and seamless transactions.",
     technologies: ["React", "TypeScript", "Firebase", "Tailwind CSS"],
-    image:
-      "./homure.png",
+    image: "./homure.png",
     github: "#",
     live: "#",
     categories: ["team project", "in-progress"],

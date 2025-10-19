@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import React from "react";
 const Contact: React.FC = () => {
   return (
@@ -17,15 +17,15 @@ const Contact: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <Mail size={20} className="mr-3 text-blue-400" />
-                <span>john.doe@email.com</span>
+                <span>corotanjaysonjake@gmail.com</span>
               </div>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <Phone size={20} className="mr-3 text-blue-400" />
                 <span>+1 (555) 123-4567</span>
-              </div>
+              </div> */}
               <div className="flex items-center">
                 <MapPin size={20} className="mr-3 text-blue-400" />
-                <span>San Francisco, CA</span>
+                <span>Cagayan de Oro City, Philippines</span>
               </div>
             </div>
           </div>

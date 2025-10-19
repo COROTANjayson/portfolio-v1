@@ -46,10 +46,10 @@ export const Socials: React.FC<{
   lineClassName?: string;
 }> = ({ className }) => {
   const socialList = [
-    { href: "https://github.com/", Icon: IconBrandGithub },
-    { href: "https://instagram.com/", Icon: IconBrandInstagram },
-    { href: "https://linkedin.com/", Icon: IconBrandLinkedin },
-    { href: "https://facebook.com/", Icon: IconBrandFacebook },
+    { href: "https://github.com/COROTANjayson", Icon: IconBrandGithub },
+    { href: "https://www.instagram.com/jyzncrtn/", Icon: IconBrandInstagram },
+    { href: "https://www.linkedin.com/in/jayson-jake-corotan", Icon: IconBrandLinkedin },
+    { href: "https://web.facebook.com/jayson.corotan", Icon: IconBrandFacebook },
   ];
 
   return (

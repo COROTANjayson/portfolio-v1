@@ -69,8 +69,11 @@ const Navigation: React.FC = () => {
     >
       <div className=" mx-auto ">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
           <motion.div
+          onClick={()=>{
+            scrollToSection("hero");
+
+          }}
             className="text-2xl font-bold text-white cursor-pointer hover:text-cyan-400 transition-colors duration-200"
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -82,7 +85,7 @@ const Navigation: React.FC = () => {
               delay: 0.1,
             }}
           >
-            Portfolio
+            <img src="/banner.svg" alt="logo" className="w-24" />
           </motion.div>
           {/* Desktop Navigation */}
           <DesktopNavigation
