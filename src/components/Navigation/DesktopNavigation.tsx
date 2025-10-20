@@ -74,7 +74,7 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
 
   return (
     <motion.div
-      className="hidden md:flex space-x-1 relative gap-1"
+      className="hidden md:flex space-x-2 relative gap-1"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -119,7 +119,7 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
             }}
           />
           <motion.span
-            className="relative z-10 tracking-wide text-sm font"
+            className="relative z-10 tracking-wide text-base font"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
