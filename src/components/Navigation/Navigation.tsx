@@ -5,7 +5,8 @@ import MobileNavigation from "./MobileNavigation";
 
 import { motion, AnimatePresence } from "framer-motion";
 // Main Navigation Component
-const Navigation: React.FC = () => {
+const 
+Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);

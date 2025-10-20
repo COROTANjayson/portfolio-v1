@@ -9,7 +9,7 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="relative min-h-screen bg-slate-900">
+    <div className="relative min-h-screen bg-slate-900 ">
       <Navigation />
       <Socials />
       <ScrollUpButton />

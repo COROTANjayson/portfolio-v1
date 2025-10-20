@@ -3,6 +3,7 @@ import ResumeButton from "./ResumeButton";
 import type { NavigationProps, NavItem } from "./interfaces";
 import { motion, type Variants } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import ViewResumePDF from "../ViewPDF";
 
 const DesktopNavigation: React.FC<NavigationProps> = ({
   activeSection,
@@ -149,7 +150,7 @@ const DesktopNavigation: React.FC<NavigationProps> = ({
           damping: 20,
         }}
       >
-        <ResumeButton />
+        <ViewResumePDF />
       </motion.div>
     </motion.div>
   );
