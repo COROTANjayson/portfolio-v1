@@ -68,17 +68,17 @@ export const projects: Project[] = [
     categories: ["team project", "in-progress"],
     role: "frontend",
   },
-  {
-    id: 6,
-    title: "SummarAIze",
-    description:
-      "AI-powered application that allows users to upload PDF documents and generate concise summaries through an interactive chat interface.",
-    technologies: ["Next.js", "OpenAi", "PostgreSQL(Prisma)", "tRPC"],
-    image:
-      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=300&fit=crop",
-    github: "#",
-    live: "#",
-    categories: ["personal project"],
-    role: "full-stack",
-  },
+  // {
+  //   id: 6,
+  //   title: "SummarAIze",
+  //   description:
+  //     "AI-powered application that allows users to upload PDF documents and generate concise summaries through an interactive chat interface.",
+  //   technologies: ["Next.js", "OpenAi", "PostgreSQL(Prisma)", "tRPC"],
+  //   image:
+  //     "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=300&fit=crop",
+  //   github: "#",
+  //   live: "#",
+  //   categories: ["personal project"],
+  //   role: "full-stack",
+  // },
 ];
