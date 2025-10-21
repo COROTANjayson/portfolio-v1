@@ -5,9 +5,10 @@ import {
   IconBrandFacebook,
 } from "@tabler/icons-react";
 import { cn } from "../../utils/utils";
-import { motion, type Variants } from "framer-motion";
-import { ChevronUp } from "lucide-react";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
+import { ChevronUp, Check, Copy } from "lucide-react";
 import { useEffect, useState } from "react";
+import {} from "lucide-react";
 
 // Individual social icon animation
 const itemVariants: Variants = {
@@ -48,8 +49,14 @@ export const Socials: React.FC<{
   const socialList = [
     { href: "https://github.com/COROTANjayson", Icon: IconBrandGithub },
     { href: "https://www.instagram.com/jyzncrtn/", Icon: IconBrandInstagram },
-    { href: "https://www.linkedin.com/in/jayson-jake-corotan", Icon: IconBrandLinkedin },
-    { href: "https://web.facebook.com/jayson.corotan", Icon: IconBrandFacebook },
+    {
+      href: "https://www.linkedin.com/in/jayson-jake-corotan",
+      Icon: IconBrandLinkedin,
+    },
+    {
+      href: "https://web.facebook.com/jayson.corotan",
+      Icon: IconBrandFacebook,
+    },
   ];
 
   return (
@@ -77,7 +84,7 @@ export const Socials: React.FC<{
           />
         </motion.a>
       ))}
-      <motion.a
+      {/* <motion.a
         href={"#"}
         target="_blank"
         rel="noopener noreferrer"
@@ -89,7 +96,8 @@ export const Socials: React.FC<{
         variants={itemVariants}
       >
         corotanjaysonjake@gmail.com
-      </motion.a>
+      </motion.a> */}
+      <CopyEmail />
     </motion.div>
   );
 };
@@ -156,5 +164,49 @@ export const ScrollUpButton: React.FC = () => {
         </div>
       </button>
     </>
+  );
+};
+
+export const CopyEmail = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText("corotanjaysonjake@gmail.com");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
+
+  return (
+    <div className="relative flex items-center justify-center">
+      <motion.button
+        onClick={handleCopy}
+        className=" cursor-pointer text-slate-400 text-sm font-semibold tracking-widest hover:text-cyan-300 hover:-translate-y-1 transition-all duration-300"
+        style={{
+          writingMode: "vertical-rl",
+          textOrientation: "mixed",
+        }}
+        variants={itemVariants}
+      >
+        corotanjaysonjake@gmail.com
+      </motion.button>
+
+      <AnimatePresence>
+        {copied && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute left-10 bg-gray-800 text-cyan-300 text-xs font-medium px-2 py-1 rounded shadow-md flex items-center gap-1"
+          >
+            <Check size={15}/> Copied!
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
