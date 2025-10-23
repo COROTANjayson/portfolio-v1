@@ -6,7 +6,7 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "../../utils/utils";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { ChevronUp, Check, Copy } from "lucide-react";
+import { ChevronUp, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import {} from "lucide-react";
 

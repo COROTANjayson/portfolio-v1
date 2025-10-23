@@ -160,7 +160,7 @@ const TypingCodeSnippet = () => {
     }
   }, [isVisible, currentChar, currentLineIndex]);
 
-  const renderColoredLine = (lineText: string | any[], segments: any[]) => {
+  const renderColoredLine = (lineText: string | string[], segments: any[]) => {
     let charCount = 0;
     return segments.map((segment, i) => {
       const segmentStart = charCount;

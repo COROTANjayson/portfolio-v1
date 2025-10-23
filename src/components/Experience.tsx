@@ -5,12 +5,20 @@ import { ChevronDown } from "lucide-react";
 import { SectionHeader } from "./general/headers";
 import { Section } from "./general/section";
 import { cn } from "../utils/utils";
+type TExperienceItem = {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+  techStack: string[];
+};
+
 const Experience = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const experiences = [
+  const experiences: TExperienceItem[] = [
     {
       title: "Backend Developer",
       company: "Seven 365 Pte Ltd.",
@@ -84,7 +92,7 @@ const Experience = () => {
     },
   ];
 
-  const toggleAccordion = (index: any) => {
+  const toggleAccordion = (index: React.SetStateAction<number | null>) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -132,7 +140,7 @@ const Experience = () => {
           number={2}
           className=" text-4xl"
         />
-        <motion.div className="px-14 "  variants={containerVariants}>
+        <motion.div className="px-14 " variants={containerVariants}>
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
@@ -154,7 +162,6 @@ const Experience = () => {
                   <motion.button
                     onClick={() => toggleAccordion(index)}
                     className="w-full text-left p-6 rounded"
-                  
                   >
                     <div className="flex items-start justify-between gap-8">
                       <div className="flex-1 space-y-4">

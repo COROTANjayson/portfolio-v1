@@ -83,7 +83,7 @@ const Work: React.FC = () => {
 
     setTimeout(() => {
       setActiveFilter(newFilter);
-      gridRef.current?.offsetHeight;
+      void gridRef?.current?.offsetHeight;
 
       requestAnimationFrame(() => {
         toKeep.forEach((id) => {
@@ -96,7 +96,7 @@ const Work: React.FC = () => {
             if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
               element.style.transition = "none";
               element.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-              element.offsetHeight;
+              void element.offsetHeight;
               element.style.transition =
                 "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
               element.style.transform = "translate(0, 0)";

@@ -1,5 +1,4 @@
 import React from "react";
-import ResumeButton from "./ResumeButton";
 import type { NavigationProps, NavItem } from "./interfaces";
 import { motion, type Variants } from "framer-motion";
 import { useNavigate } from "react-router-dom";
